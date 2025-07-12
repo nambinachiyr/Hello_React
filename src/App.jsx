@@ -2,28 +2,18 @@
 // Parent Cpmponent to Greeting
 import Greeting from "./Components/Greetin";
 
-// Passing a property parent to child using Props- method
 
 function App(){
-  // // If have only one 
-  //  const name = "krish"
-
-  // if have multiple
-  // const details = {
-  //   name:"nambi",
-  //   email:"nambi12@gmail.com",
-  //   signedUp:"yes"
-  // }
-
-  let name = "Nambi"
-  let email = "nambi12@gmail.com"
- return (
-  <>
-    {/* <Greeting nam = {name}/> */}
-    {/* <Greeting details = {details}/> */}
-    <Greeting name = {name} email = {email}/>
-  </>
- )
+    // To create a like callback function for getting the name and email
+  function childToParent(name,email){
+    console.log("function from parent !!!")
+    console.log(name, email)
+  }
+  
+  return(
+    // to set the data for passing the child component through like a attribute
+    <Greeting  childToParent = {childToParent}/>
+    )
 }
 
 export default App;
