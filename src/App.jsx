@@ -1,18 +1,13 @@
 // /Bacic
 // Parent Cpmponent to Greeting
-import Greeting from "./Components/Greetin";
+import ComA from "./Components/comA";
 
-
-function App(){
-    // To create a like callback function for getting the name and email
-  function childToParent(name,email){
-    console.log("function from parent !!!")
-    console.log(name, email)
-  }
-  
+function App(){  
+   let name = "Nambi Nachiyar"
   return(
-    // to set the data for passing the child component through like a attribute
-    <Greeting  childToParent = {childToParent}/>
+    <>
+      <ComA name = {name}/>
+    </>
     )
 }
 
