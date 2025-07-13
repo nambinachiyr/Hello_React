@@ -2,33 +2,36 @@
 
 import { useState } from "react"
 
+// Single state
 
+//one  useState function with mulitiple variable create
 function App () {
-     
-   // Use multipleStates useState function
-  
-  let [like,setLike] = useState(0)
-  let [dislike,setDislike] = useState(0)
 
-   function likeClick(){
-     
-      console.log("clicked",like)
-      setLike(like+1)
-   }
-   function dislikeFun(){
-      setDislike(dislike+1)
-   }
-   
-  return (
-    <>
-      <h1>likes & dislike</h1>
-      <button onClick={likeClick}>Like {like}</button>
-      <button onClick={dislikeFun}>Dislike {dislike}</button>
-     
+    let [reaction,setReaction] = useState({
+      like:0,
+      dislike:0
+    })
+    console.log(reaction)
+    function likeFun(){
+      // If we have two variable it is ok but whatif if we have 10 vari
+      // setReaction({like:reaction.like+1,dislike:reaction.dislike})
 
-    </>
+      // this way
+      setReaction({...reaction,like:reaction.like+1})
+      // console.log(reaction.like,"- Likes",reaction.dislike,"- Dislike")
+    }
+    function dislikeFun(){
+      // setReaction({dislike:reaction.dislike+1, like:reaction.like})
 
-  )
+       setReaction({...reaction,dislike:reaction.dislike+1})
+      // console.log(reaction.like,"- Likes",reaction.dislike,"- Dislike")
+    }
+
+   return(
+      <>
+        <button onClick={likeFun}>Like {reaction.like}</button> <button onClick={dislikeFun}>DisLike {reaction.dislike}</button>
+      </>
+   )
 }
 
 export default App
