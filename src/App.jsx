@@ -1,19 +1,38 @@
 // /Bacic
 
-
-// This is functional component
-// using function syntax
-// function App(){  
-//    return<h1>Heelo,from functional component</h1>
-// }
+import { useState } from "react"
 
 
-// This is the class component
-import React from 'react'
-class App extends React.Component{
-   render(){
-    return <h1>Hello from class component</h1>
+function App () {
+   // let count = 0 -> this is ordinary variable so this is not to allows to change the UI element
+    
+   // Use useState function
+   let [count,setCount] = useState(0)
+
+   function handleClick(){
+      // count ++:Not work in UI
+      
+      console.log("clicked",count)
+      setCount(count+1)
    }
+   function decreaseFun(){
+      console.log(count,"decrease")
+      setCount(count-1)
+   }
+   function resetFun(){
+      console.log(count,"reset")
+      setCount(count=0)
+   }
+  return (
+    <>
+      <h1>Count : {count}</h1>
+      <button onClick={handleClick}>Increase</button>
+      <button onClick={decreaseFun}>Decrease</button>
+      <button onClick={resetFun}>reset</button>   
+
+    </>
+
+  )
 }
 
-export default App;
+export default App
