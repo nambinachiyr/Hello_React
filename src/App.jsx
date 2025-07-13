@@ -3,20 +3,18 @@
 import { useState } from "react"
 
 function App () {
-
-    let [reaction,setReaction] = useState([0,0])
-    console.log(reaction)
-    function likeFun(){
-      setReaction([reaction[0]+1,reaction[1]])
-    }
-    function dislikeFun(){
-     setReaction([reaction[0],reaction[1]+1])
-    }
-
+   let [count,setCount] = useState(0)
+   function re_render(){
+       setCount(count+1)
+   }
+   fetch(`https://686be60114219674dcc688b8.mockapi.io/todoApp`)
+   .then(res=>res.json())
+   .then(data=>console.log(data))
    return(
-      <>
-        <button onClick={likeFun}>Like {reaction[0]}</button> <button onClick={dislikeFun}>DisLike {reaction[1]}</button>
-      </>
+     <>
+       <h1>Fetch Data in console</h1>
+       <button onClick={re_render}>re-render</button>
+     </>
    )
 }
 
