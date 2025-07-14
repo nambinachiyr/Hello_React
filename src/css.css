@@ -1,0 +1,8 @@
+.list{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+.inp [type='checkbox']{
+    margin-right: 10px;
+}

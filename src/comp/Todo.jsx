@@ -1,23 +1,17 @@
 import React from 'react'
-
+import "/src/css.css"
 function Todo({todo}) {
-  /* this is if else statement
-  
-  if(todo.type==="Income"){
-        return (
-            <li>{todo.description} {"✅"}</li>
-        )
-   }else{
-    return(
-        <li>{todo.description} {"❌"}</li>
-    )
-   }
-  */
-//  This is ternary Operator
-//  return todo.type === "Income"? <li>{todo.description} {"✅"}</li>:<li>{todo.description} {"❌"}</li>
-
-// Using Logical Operator
- return todo.type === "Income"&& <li>{todo.description} {"✅"}</li>||<li>{todo.description} {"❌"}</li>
+ 
+ return (
+    <>
+      <ul>
+        <li className='list'>
+            <input type="checkbox" className='inp' checked = {todo.type==="Expense"}/> 
+            <p style={{textDecoration:todo.type === "Expense"?"line-through":"none"}}>{todo.description}</p>
+        </li>
+      </ul>
+    </>
+ )
 
 }
 
