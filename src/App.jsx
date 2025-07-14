@@ -1,37 +1,27 @@
-// /Bacic
 
-import { useEffect, useState } from "react"
-import Todo from "./comp/todo";
-
+// This is Uncontroled component
+// Because we are not using the state to manage the input values
 function App () {
-   
-   // Set the State element to fetch the UI
-   const [todos,setTodos] = useState([]);
 
-   useEffect(()=>{
-      fetch("https://686be60114219674dcc688b8.mockapi.io/todoApp")
-      .then(response => response.json())
-      .then(data => setTodos(data))
-   },[])
-   console.log(todos)
+   function handleLogin(e){
+      e.preventDefault()
+      console.log(e.target.email.value,e.target.password.value)
 
-   return(
-      <>
-        <h1>Todo</h1>
-        <ul>
-         {
-            todos.map((todo)=> (
-               // console.log(todo.id)
-               <Todo 
-               key = {todo.id}
-               todo= {todo}
-                
-               />
-            ))
-         }
-        </ul>
-      </>
-   )
+   }
+  return(
+   <>
+     <h3>Form Login</h3>
+     <form onSubmit={()=>handleLogin(event)}>
+        <input type="email" placeholder="email.." name="email"/>
+        <br/>
+        <br/>
+        <input type="password" placeholder="password.." name="password"/>
+        <br/>
+        <br/>
+        <button>Login</button>
+     </form>
+   </>
+  )
 }
 
 export default App
