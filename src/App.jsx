@@ -1,32 +1,54 @@
+import { useRef } from "react"
 
-// This is controled component
-
-import { useEffect, useState } from "react"
-
-// Because we are using the state to manage the input values
 function App () {
- 
-   const [email,setEmail] = useState('')
-   const [password,setPassword] = useState('')
 
+   // This is traditional DOM way
+//    function handleLogin(e){
+//       e.preventDefault()  
+//        let email = document.getElementById("email_id").value
+//        let password = document.getElementById("p_w_id").value
+//       console.log(email,password)
+        
+//    }
+
+
+//   return(
+//    <>
+//      <h3>Form Login</h3>
+//      <form onSubmit={()=>handleLogin(event)}>
+//         <input type="email" placeholder="email.." name="email" id="email_id"/>
+//         <br/>
+//         <br/>
+//         <input type="password" placeholder="password.." name="password" id="p_w_id"/>
+//         <br/>
+//         <br/>
+//         <button>Login</button>
+//      </form>
+//    </>
+//   )
+  
+// We create to element using useRef();
+//   in above the handle function & inside the component app
+   let email = useRef(null)
+   let password = useRef(null)
+
+   // Using redex way in DOM
    function handleLogin(e){
-      e.preventDefault()  
-      console.log(email,password)
+   
+      e.preventDefault()
+      console.log(password.current.value)  
+      console.log(email.current.value)
         
    }
 
-// just for checking purpose
-   //  useEffect(()=>{
-   //        console.log(email)
-   //    },[email]) 
   return(
    <>
      <h3>Form Login</h3>
      <form onSubmit={()=>handleLogin(event)}>
-        <input type="email" placeholder="email.." name="email" value={email} onChange={e=>(setEmail(e.target.value))}/>
+        <input type="email" placeholder="email.." ref={email}/>
         <br/>
         <br/>
-        <input type="password" placeholder="password.." name="password"value={password} onChange={e=>setPassword(e.target.value)} />
+        <input type="password" placeholder="password.." ref={password}/>
         <br/>
         <br/>
         <button>Login</button>
