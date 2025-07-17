@@ -8,6 +8,8 @@ function App() {
    <>
       <h3>Like: {like}</h3>
       <button onClick={()=>dispatch({type:"LIKE"})}>Like</button>
+      <button onClick={()=>dispatch({type:"DISLIKE"})} style={{margin:10}}>disLike {like}</button>
+
    </>
   )
 }
