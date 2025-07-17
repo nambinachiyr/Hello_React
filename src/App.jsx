@@ -1,16 +1,20 @@
-import React, { useReducer} from 'react'
-import { initialValue, reducer } from './Reducer/R_out_of_comp'
+import React from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-function App() {
-    //  Separete function
-    let [reaction,dispatch] = useReducer(reducer,initialValue)  
+let router = createBrowserRouter([
+    {
+        path:"/",
+        element:<h1>Heelo World</h1>
+    },
+    {
+        path:"/about",
+        element:<h1>About US </h1>
+    }
+
+])
+const App = () => {
   return (
-   <>
-      <h3>Like: </h3>
-      <button onClick={()=>dispatch({type:"LIKE"})}>Like {reaction.like}</button>
-      <button onClick={()=>dispatch({type:"DISLIKE"})} style={{margin:10}}>disLike {reaction.dislike}</button>
-
-   </>
+    <RouterProvider router={router}/>
   )
 }
 
