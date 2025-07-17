@@ -1,59 +1,39 @@
-import { useRef } from "react"
+import React, { useEffect, useRef, useState } from 'react'
 
-function App () {
-
-   // This is traditional DOM way
-//    function handleLogin(e){
-//       e.preventDefault()  
-//        let email = document.getElementById("email_id").value
-//        let password = document.getElementById("p_w_id").value
-//       console.log(email,password)
-        
-//    }
-
-
-//   return(
-//    <>
-//      <h3>Form Login</h3>
-//      <form onSubmit={()=>handleLogin(event)}>
-//         <input type="email" placeholder="email.." name="email" id="email_id"/>
-//         <br/>
-//         <br/>
-//         <input type="password" placeholder="password.." name="password" id="p_w_id"/>
-//         <br/>
-//         <br/>
-//         <button>Login</button>
-//      </form>
-//    </>
-//   )
-  
-// We create to element using useRef();
-//   in above the handle function & inside the component app
-   let email = useRef(null)
-   let password = useRef(null)
-
-   // Using redex way in DOM
-   function handleLogin(e){
-   
-      e.preventDefault()
-      console.log(password.current.value)  
-      console.log(email.current.value)
-        
+function App() {
+    
+   let [refresh,setRefresh] = useState(1)
+   let refreshB = ()=>{
+       setRefresh(refresh+1)
+       console.log(refresh,"refresh count")
    }
 
-  return(
-   <>
-     <h3>Form Login</h3>
-     <form onSubmit={()=>handleLogin(event)}>
-        <input type="email" placeholder="email.." ref={email}/>
-        <br/>
-        <br/>
-        <input type="password" placeholder="password.." ref={password}/>
-        <br/>
-        <br/>
-        <button>Login</button>
-     </form>
-   </>
+    let count = 0
+   const normal = ()=>{
+       count = count+1;
+       console.log(count,"normal-count")
+   }
+
+   let count1 = useRef(0)
+   const useref = ()=>{
+      count1.current = count1.current+1
+      console.log(count1.current,"ref-count")
+   }
+  
+
+   let [count2,setCount2] = useState(0)
+   const use = ()=>{
+       setCount2(count2+1);
+       console.log(count2,"state-count")
+   }
+  return (
+    <div >
+       <h1>Refresh the Componetent</h1>
+       <button onClick={refreshB}>Refresh</button>  <button onClick={normal}>N-Increase</button>  <button onClick={useref}>UR-Increase</button>  <button onClick={use}>US-Increase</button>
+       <br/>     
+       <br/>     
+       <span>(Ordinary Variable - {count})</span> | <span>(UseRef variable - {count1.current})</span> | <span>(Usestate variable - {count2})</span>
+       </div>
   )
 }
 
