@@ -1,16 +1,23 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import Home from './pages/Home'
+import Login from './Components/Login'
+import Register from './Components/Register'
 
 
 let routes = [
     {
         path:"/",
-        element:<h1>Heelo World</h1>
+        element:<Home/>
     },
     {
-        path:"/about",
-        element:<h1>About US </h1>
-    }
+        path:"/Login",
+        element:<Login/>
+    },
+    {
+      path:"/Register",
+      element:<Register/>
+    },
 
 ]
 let router = createBrowserRouter(routes,{
