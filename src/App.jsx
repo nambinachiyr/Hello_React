@@ -4,6 +4,8 @@ import Login from './Components/Login'
 import Register from './Components/Register'
 import Homewrap from './Wrapers/Homewrap'
 import Dashboard from './Components/Dashboard'
+import Content1 from './Components/Content1'
+import Content2 from './Components/Content2'
 
 
 let routes = [
@@ -28,7 +30,22 @@ let routes = [
 },
 {
   path:"dashboard",
-  element:<Dashboard/>
+  element:<Dashboard/>,
+},
+{
+  path:"/",
+
+  children:[
+    {
+      path:"content1",
+      element:<Content1/>
+    },
+    {
+      path:"content2",
+      element:<Content2/>
+    }
+  ]
+
 }
     
 ]
