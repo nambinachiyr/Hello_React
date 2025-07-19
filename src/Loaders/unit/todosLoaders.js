@@ -1,8 +1,15 @@
+import axios from "axios";
+
 const todosLoader = async () =>{
     try{
-         const response =await fetch('https://686be60114219674dcc688b8.mockapi.io/todoApp')
-         const data = await response.json()        
-         return data;
+        // Set axios library
+         const response =await axios.get('https://686be60114219674dcc688b8.mockapi.io/todoApp',{
+            header:{
+                "Content-Type":"application/json",
+            },     
+         })
+       console.log(response)       
+         return response.data;
     }
     catch(error){
         return [];

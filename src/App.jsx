@@ -40,7 +40,7 @@ let routes = [
       path:"todo/:id",
       element:<Todo/>,
       loader:todoLoader,
-      hrdrateFallbackElement:<p>Loading todo....</p>
+      hydrateFallbackElement:<p>Loading todo....</p>
   },
     
 ]
