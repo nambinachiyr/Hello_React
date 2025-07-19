@@ -1,5 +1,5 @@
 
-import { data, Link, useNavigate } from 'react-router'
+import { data, Link, useLoaderData, useNavigate } from 'react-router'
 
 import '../style/DashboardStyle.css'
 
@@ -11,19 +11,18 @@ const Dashboard = () => {
     // This statement is always be out of the function 
     const navigate = useNavigate();
 
+   const todo = useLoaderData();
+
     function handleLoggedOut(){
         
         confirm("Are you Sure?") && navigate("/login");
     }
 
     // Create state value
-    let [todo,setTodo] = useState({});
 
     // Retrive the data form mockAPI
     useEffect(()=>{
-         fetch('https://686be60114219674dcc688b8.mockapi.io/todoApp')
-         .then(response => response.json())
-         .then(data=>setTodo(data))
+        
     },[])
     useEffect(()=>{
       console.log(todo)

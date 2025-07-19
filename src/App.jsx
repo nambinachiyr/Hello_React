@@ -5,6 +5,9 @@ import Register from './Components/Register'
 import Homewrap from './Wrapers/Homewrap'
 import Dashboard from './Components/Dashboard'
 import Todo from './Components/Todo'
+import todosLoader from './Loaders/unit/todosLoaders'
+import todoLoader from './Loaders/unit/todoLoaders'
+
 
 
 let routes = [
@@ -30,13 +33,14 @@ let routes = [
 {
   path:"dashboard",
   element:<Dashboard/>,
+  loader:todosLoader,
+  hydrateFallbackElement:<p>Loading Dashboard.....</p>,
 },
  {
-      //  This is for QueryParams
-      // path:"todo",
-      // This is for URLparams
       path:"todo/:id",
-      element:<Todo/>
+      element:<Todo/>,
+      loader:todoLoader,
+      hrdrateFallbackElement:<p>Loading todo....</p>
   },
     
 ]
