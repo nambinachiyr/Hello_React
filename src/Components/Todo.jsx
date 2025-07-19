@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useLocation, useNavigate, useParams } from "react-router";
+import instance from "../instances/instance";
 
 const Todo = () => {
   // Use Navigate function for navigate the page
@@ -10,9 +11,13 @@ const Todo = () => {
       // Back to Navigate the page to dashboard
       navi(-1);
     }
-    // useEffect(()=>{
-    //     console.log(todos)
-    // },[todos])
+    function handleDelete(){
+      confirm("Delete it?") && instance.delete(`/todoApp/${todos.id}`)
+      .then(alert("Deleted !!!..."))
+
+      // navigate to dashboard page
+      navi("/dashboard")
+    }
   return (
     <div>
         <h2>Todos</h2>
@@ -23,6 +28,7 @@ const Todo = () => {
            <p>Amount: {todos.amount}</p>
            <p>Date: {new Date(todos.createdAt).toLocaleDateString() }</p>
            <button onClick={handleBack}>Back</button>
+           <button onClick={handleDelete}>Delete</button>
         
     </div>
   )
