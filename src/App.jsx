@@ -30,19 +30,11 @@ let routes = [
 {
   path:"dashboard",
   element:<Dashboard/>,
-// },
-// {
-//   path:"/",
-
-  children:[
-    {
+},
+ {
       path:"todo",
       element:<Todo/>
-    },
-    
-  ]
-
-}
+  },
     
 ]
 let router = createBrowserRouter(routes,{

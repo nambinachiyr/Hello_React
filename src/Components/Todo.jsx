@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const Todo = () => {
+  // Use Navigate function for navigate the page
+  const navi = useNavigate()
     const location = useLocation();
     const query = new URLSearchParams(location.search)
   
@@ -15,7 +17,13 @@ const Todo = () => {
         .catch(error=>{
             console.log(error.message)
         })
-    },[location.search])
+    },[])//We don't need to write "location.search" cuz we set that in separate page
+
+    // Function For Back Button
+    function handleBack(){
+      // Back to Navigate the page to dashboard
+      navi(-1);
+    }
     // useEffect(()=>{
     //     console.log(todos)
     // },[todos])
@@ -28,6 +36,7 @@ const Todo = () => {
            <p>Description: {todos.description}</p>
            <p>Amount: {todos.amount}</p>
            <p>Date: {new Date(todos.createdAt).toLocaleDateString() }</p>
+           <button onClick={handleBack}>Back</button>
         
     </div>
   )

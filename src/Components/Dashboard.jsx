@@ -1,9 +1,10 @@
 
-import { data, Link, Outlet, useNavigate } from 'react-router'
+import { data, Link, useNavigate } from 'react-router'
 
 import '../style/DashboardStyle.css'
 
 import { useEffect, useState } from 'react';
+
 
 const Dashboard = () => {
 
@@ -12,8 +13,7 @@ const Dashboard = () => {
 
     function handleLoggedOut(){
         
-        confirm("Are you Sure?");
-        navigate("/login")
+        confirm("Are you Sure?") && navigate("/login");
     }
 
     // Create state value
@@ -30,6 +30,7 @@ const Dashboard = () => {
     },[todo])
     
   return (
+    <>
   <div className='dashboard'>
     <div className='sideBar'>
         <h2>Dashboard</h2>
@@ -42,7 +43,7 @@ const Dashboard = () => {
             {
               todo.map(td=> (// NOTE: dont use {}<- this use this->() if you use {} set it return
                <li key = {td.id}>
-                <Link to={`/dashboard/todo?id=${td.id}`}>
+                <Link to={`/todo?id=${td.id}`}>
                  {td.description}
                 </Link>
                </li>
@@ -55,11 +56,13 @@ const Dashboard = () => {
         }       
         <button onClick={handleLoggedOut}>Logged out</button>
     </div>
-    <div className='content'>
+    {/* <div className='content'> */}
       {/* Open in this page */}
-       <Outlet/>
-    </div>
+       {/* <Outlet/> */}
+    {/* </div> */}
  </div>
+  {/* <Todo/> */}
+  </>
   )
 }
 
