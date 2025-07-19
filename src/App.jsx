@@ -32,7 +32,10 @@ let routes = [
   element:<Dashboard/>,
 },
  {
-      path:"todo",
+      //  This is for QueryParams
+      // path:"todo",
+      // This is for URLparams
+      path:"todo/:id",
       element:<Todo/>
   },
     

@@ -43,7 +43,9 @@ const Dashboard = () => {
             {
               todo.map(td=> (// NOTE: dont use {}<- this use this->() if you use {} set it return
                <li key = {td.id}>
-                <Link to={`/todo?id=${td.id}`}>
+                {/* This is for query */}
+                {/* <Link to={`/todo?id=${td.id}`}> */}
+                <Link to={`/todo/${td.id}`}>
                  {td.description}
                 </Link>
                </li>
