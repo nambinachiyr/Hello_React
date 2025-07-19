@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 const Todo = () => {
     const location = useLocation();
     const query = new URLSearchParams(location.search)
-   
+  
     let [todos,setTodos] = useState({})   
 
     useEffect(()=>{
