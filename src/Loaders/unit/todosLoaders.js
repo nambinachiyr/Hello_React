@@ -1,16 +1,14 @@
-import axios from "axios";
-import instance from "../../instances/instance";
+
+import todoServices from "../../todoServices/todoServices";
 
 const todosLoader = async () =>{
-    try{
-        // Set instance
-         const response =await instance.get('/todoApp')
-    //    console.log(response)       
-         return response.data;
+   try{
+       const todo = await todoServices.getTodo();
+       return todo;
     }
     catch(error){
-        return [];
-    };
+        return []
+    }
     
 }
 export default todosLoader

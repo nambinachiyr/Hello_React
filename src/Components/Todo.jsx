@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react";
-import { useLoaderData, useLocation, useNavigate, useParams } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import instance from "../instances/instance";
+import todoServices from "../todoServices/todoServices";
 
 const Todo = () => {
+
   // Use Navigate function for navigate the page
   const navi = useNavigate()
+
+  // Receive the data from the todoLoader
     let todos = useLoaderData()
+
     // Function For Back Button
     function handleBack(){
+
       // Back to Navigate the page to dashboard
       navi(-1);
     }
+       
     function handleDelete(){
-      confirm("Delete it?") && instance.delete(`/todoApp/${todos.id}`)
+      confirm("Delete it?") && todoServices.deleteTodo(todos.id)
       .then(alert("Deleted !!!..."))
 
       // navigate to dashboard page
